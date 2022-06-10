@@ -1,25 +1,27 @@
-import logo from './logo.svg';
 import './App.css';
+import React from "react";
+import Example from "./Example";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+    constructor() {
+        super();
+        this.state = {
+            country: "Ukraine"
+        }
+    }
+
+    changeTextHandler = () => {
+        this.state.country === "Ukraine" ? this.setState({country: "Ukraine is the best country"}) : this.setState({country: "Ukraine"});
+    };
+
+    render() {
+        return (
+            <>
+                <Example country={this.state.country}/>
+                <button onClick={this.changeTextHandler}>Change text</button>
+            </>
+        )
+    }
 }
 
 export default App;
